@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -16,21 +18,29 @@ import java.util.Date;
 public class Medico {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
+    @Column()
     private String nome;
 
+    @Column()
     private String cpf;
 
+    @Column()
     private Date dataNascimento;
 
+    @Column()
     private String crm;
 
+    @Column()
     private Especialidade especialidade;
 
+    @Column()
     private String telefone;
 
-    private Integer idade;
+    @ManyToOne
+    @JoinColumn(name = "ubs_id")
+    private Ubs ubs;
 
 }

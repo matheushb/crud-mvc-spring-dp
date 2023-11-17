@@ -5,31 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
-@Table
 @Entity
+@Table
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Paciente {
+public class Ubs {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Column()
-    private String nome;
-
     @Column
-    private String cpf;
+    private String endereco;
 
-    @Column()
-    private Date dataNascimento;
-
-    @Column
-    private String telefone;
-
-
+    @OneToMany(mappedBy = "ubs", cascade = CascadeType.ALL)
+    private List<Medico> medicos;
 
 }
